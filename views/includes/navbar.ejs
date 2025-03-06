@@ -1,0 +1,93 @@
+<style>
+  .btn-search {
+    background-color: #fe424d !important;  /* Ensuring it overrides Bootstrap */
+    color: #fff !important;
+    border-radius: 1.5rem;
+    padding: 0 1rem;
+    border: none;
+}
+
+.btn-search:hover {
+    background-color: #d63a44 !important; /* Slightly darker shade on hover */
+    color: #fff !important;
+}
+
+.btn-search i {
+    display: inline; /* Ensures proper alignment */
+    margin-right: 5px;
+    margin-left: 0.3rem;
+}
+
+.search_nav {
+    border-radius: 1.5rem;
+    padding: 0.5rem 3rem 0.5rem 3rem; /* Adjusted padding */
+    font-size: 1rem;
+    border: 1px solid #ccc; /* Ensuring visibility */
+}
+
+.search_nav:focus {
+    outline: none;
+    border-color: #fe424d; /* Highlight on focus */
+    box-shadow: 0 0 5px rgba(254, 66, 77, 0.5);
+}
+
+</style>
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/listings"><i class="fa-solid fa-compass"></i></a>
+      <button class="navbar-toggler" type="button" 
+      data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" 
+      aria-controls="navbarNavAltMarkup" aria-expanded="true" 
+      aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link" href="/listings">Explore</a>
+          
+        </div>
+
+        <div class="navbar-nav ms-auto">
+          <form class="d-flex" role="search">
+              <select class="form-control me-2 search_nav" id="countrySelect">
+                  <option value="">Select Country</option>
+              </select>
+              <button class="btn btn-search" type="submit">
+                   Search<i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+          </form>
+      </div>
+
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="/listings/new">Airbnb your home</a>
+          <% if(!currUser) { %>
+          <a class="nav-link"  href="/signup"><b>Sign Up</b></a>
+          <a class="nav-link" href="/login"><b>Login</b></a>
+          <% } %>
+          <% if(currUser) { %>
+          <a class="nav-link" href="/logout">Logout</a>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const countrySelect = document.getElementById("countrySelect");
+      const countries = [
+          "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
+          "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Brazil",
+          "Canada", "China", "Colombia", "Denmark", "Egypt", "Finland", "France", "Germany", "India", "Indonesia", "Italy", "Japan",
+          "Mexico", "Netherlands", "Pakistan", "Russia", "South Africa", "Spain", "Sweden", "Switzerland", "Thailand", "United Kingdom",
+          "United States", "Vietnam", "Zimbabwe"
+      ];
+
+      countries.forEach(country => {
+          const option = document.createElement("option");
+          option.value = country;
+          option.textContent = country;
+          countrySelect.appendChild(option);
+      });
+  });
+  </script>
