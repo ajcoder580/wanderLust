@@ -17,3 +17,22 @@
       }, false)
     })
   })()
+
+  //nav search for country name
+  document.addEventListener("DOMContentLoaded", function () {
+    const countrySelect = document.getElementById("countrySelect");
+    const countries = [
+        "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
+        "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Brazil",
+        "Canada", "China", "Colombia", "Denmark", "Egypt", "Finland", "France", "Germany", "India", "Indonesia", "Italy", "Japan",
+        "Mexico", "Netherlands", "Pakistan", "Russia", "South Africa", "Spain", "Sweden", "Switzerland", "Thailand", "United Kingdom",
+        "United States", "Vietnam", "Zimbabwe"
+    ];
+
+    countries.forEach(country => {
+        const option = document.createElement("option");
+        option.value = country;
+        option.textContent = country;
+        countrySelect.appendChild(option);
+    });
+});

@@ -1,27 +1,41 @@
+require("dotenv").config({ path: "../.env" });
+
+
 const mongoose = require("mongoose");
 const Listing = require("../models/listing");
 const initData = require("./data");
 
-main()
-.then((res)=>{
-    console.log("connected to DB");
-})
-.catch((err)=>{
-    console.log(err);
-})
+const dbUrl = process.env.ATLASDB_URL;
+console.log("DB URL:", dbUrl); // Debugging
 
 async function main() {
-    await mongoose.connect("mongodb://127.0.0.1:27017/wonderLust");
+    try {
+        await mongoose.connect(dbUrl, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            serverSelectionTimeoutMS: 10000,
+        });
+        console.log("Connected to DB");
+    } catch (err) {
+        console.error("DB Connection Error:", err);
+    }
 }
 
-const initDB = async () =>{
-    await Listing.deleteMany({});
-    initData.data = initData.data.map((obj)=>({
-        ...obj,
-         owner:"67b6e9004e63af0e4cf29c82",
-        })); 
-     await Listing.insertMany(initData.data);
-    console.log("data was initialized");
+const initDB = async () => {
+    try {
+        await Listing.deleteMany({});
+        console.log("Old data deleted");
+
+        initData.data = initData.data.map((obj) => ({
+            ...obj,
+            owner: "67c93b49427ea61b2e02bd64",
+        }));
+
+        await Listing.insertMany(initData.data);
+        console.log("Data initialized");
+    } catch (err) {
+        console.error("Data Initialization Error:", err);
+    }
 };
 
-initDB();
+main().then(() => initDB());

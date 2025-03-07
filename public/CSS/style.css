@@ -1,123 +1,542 @@
-/* Ensure full height for flexbox layout */
+/* 🔹 Ensure full height for flexbox layout */
 body {
     height: 100%;
     margin: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    font-family: "Plus Jakarta Sans", serif !important;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    background-color: #f9f9f9;
 }
 
-/* Ensure the container takes full space */
+/* 🔹 Ensure the container takes full space */
 .container {
-    flex: 1; /* Expands to fill available space */
+    flex: 1;
+    padding: 1rem;
 }
 
-/* Navbar */
+/* 🔹 Navbar */
 .navbar {
     height: 5rem;
     background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Navbar Icon */
 .fa-compass {
     color: #fe424d;
     font-size: 2rem;
 }
 
+/* Navbar Links */
 .nav-link {
     color: #222222 !important;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
 }
 
-/* Footer */
+.nav-link:hover {
+    color: #fe424d !important;
+}
+
+/* 🔹 Footer */
 footer {
     width: 100%;
+    margin-top: auto;
+    background-color: #ebebeb;
+    padding: 1.5rem 0;
 }
 
+/* Footer Info */
 .f-info {
     text-align: center;
-    height: 8rem;
-    background-color: #ebebeb;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center; /* Fixed alignment */
+    align-items: center;
+    flex-direction: column;
 }
 
+/* Footer Links */
 .f-info-links a {
     text-decoration: none;
     color: #222222;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
 }
 
 .f-info-links a:hover {
+    color: #fe424d;
     text-decoration: underline;
 }
 
-.f-info-links,
-.f-info-social,
-.f-info-brand {
+/* Footer Social Icons */
+.f-info-social i {
+    font-size: 1.4rem;
+    margin: 0.5rem;
+    transition: transform 0.3s ease-in-out;
+}
+
+.f-info-social i:hover {
+    transform: scale(1.2);
+}
+
+/* 🔹 Card Design */
+.listing-card {
+    border: none !important;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.listing-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Card Image */
+.card-img-top {
+    border-radius: 1rem !important;
+    width: 100% !important;
+    height: 200px;
+    object-fit: cover !important;
+}
+
+/* Card Body */
+.card-body {
+    padding: 1rem;
+}
+
+/* Card Text */
+.card-text p {
+    font-weight: 400 !important;
+    font-size: 1rem;
+    color: #444;
+}
+
+/* 🔹 Buttons */
+.add-btn,
+.edit-btn {
+    background-color: #fe424d !important;
+    border: none !important;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.add-btn:hover,
+.edit-btn:hover {
+    background-color: #d63a44 !important;
+    transform: translateY(-2px);
+}
+
+/* 🔹 Show Page Image
+.show-img {
+    height: 30vh;
     width: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+} */
+
+/* 🔹 Map Responsive */
+/* #map {
+    height: 350px;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 10px;
+} */
+
+/* 🔹 Fullscreen Hero Section (This is for show page*/
+.show-hero {
+    position: relative;
+    width: 100%;
+    height: 85vh;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.f-info-social i {
-    font-size: 1.2rem;
-    margin-right: 1.2rem;
-}
-
-/* Cards */
-.listing-card {
-    border: none !important;
-    margin-bottom: 2rem;
-}
-
-.card-img-top {
-    border-radius: 1rem !important;
-    width: 100% !important;
-    object-fit: cover !important;
-}
-
-.card-body {
-    padding: 0 !important;
-}
-
-.card-text p {
-    font-weight: 400 !important;
-}
-
-.listing-link {
-    text-decoration: none;
-}
-
-/* Card effect */
-.card-img-overlay {
-    opacity: 0;
-}
-
-.card-img-overlay:hover {
-    opacity: 0.2;
-    background-color: white;
-}
-
-/* Buttons */
-.add-btn,
-.edit-btn {
-    background-color: #fe424d !important;
-    border: none !important;
-}
-
-/* Show Page */
 .show-img {
-    height: 30vh;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    transition: transform 0.4s ease-in-out, filter 0.3s ease-in-out;
 }
 
-.show-card {
-    padding-left: 0;
-    padding-right: 0;
+/* 🔹 Smooth Zoom & Overlay Effect */
+.show-hero:hover .show-img {
+    transform: scale(1.05);
+    filter: brightness(80%);
 }
 
-#map { height: 350px;
-    width: 100vh;
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
 
- }
+/* 🔹 Hero Content */
+.hero-content {
+    position: absolute;
+    z-index: 3;
+    color: white;
+    text-align: center;
+    width: 100%;
+    padding: 1rem;
+}
+
+.hero-content h1 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.hero-content .location {
+    font-size: 1.3rem;
+    font-weight: 400;
+    opacity: 0.9;
+    margin-bottom: 0.5rem;
+}
+
+.hero-content .price {
+    font-size: 1.8rem;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+/* 🔹 Listing Card */
+.listing-card {
+    border: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    background: #ffffff;
+}
+
+.listing-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.2);
+}
+
+.listing-card h4 {
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+}
+
+/* 🔹 Buttons */
+.btn-edit, .btn-delete {
+    padding: 0.6rem 1.4rem;
+    border-radius: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-edit {
+    background: #3498db;
+    color: white;
+    border: 2px solid transparent;
+}
+
+.btn-edit:hover {
+    background: white;
+    color: #3498db;
+    border: 2px solid #3498db;
+}
+
+.btn-delete {
+    background: #e74c3c;
+    color: white;
+    border: 2px solid transparent;
+}
+
+.btn-delete:hover {
+    background: white;
+    color: #e74c3c;
+    border: 2px solid #e74c3c;
+}
+
+/* 🔹 Reviews Section */
+.reviews-section {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 12px;
+}
+
+.reviews-section h3 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* 🔹 Review Cards */
+.review-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.review-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.review-card h5 {
+    font-weight: bold;
+}
+
+/* 🔹 Star Rating */
+.starability-result {
+    font-size: 1.3rem;
+    color: #FFD700;
+}
+
+/* 🔹 Review Form */
+.review-form {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 🔹 Map Section */
+.map-section {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 🔹 Responsive Design */
+@media (max-width: 992px) {
+    .show-hero {
+        height: 70vh;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content .price {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .show-hero {
+        height: 60vh;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .reviews-section {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .show-hero {
+        height: 50vh;
+    }
+
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-content .location {
+        font-size: 1rem;
+    }
+
+    .hero-content .price {
+        font-size: 1.3rem;
+    }
+
+    .btn-edit, .btn-delete {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+
+
+/* 🔹 Search Button */
+.btn-search {
+    border-radius: 8rem !important;
+    background-color: #fe424d !important;
+    color: #fff !important;
+    border-radius: 1.5rem;
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    transition: background 0.3s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.btn-search:hover {
+    background-color: #d63a44 !important;
+    box-shadow: 0 4px 10px rgba(254, 66, 77, 0.4);
+}
+
+/* Search Button Icon */
+.btn-search i {
+    margin-right: 2px;
+    margin-left: 0.3rem;
+    border-radius: 4rem;
+    display: inline;
+}
+
+/* 🔹 Search Input */
+.search_nav {
+    border-radius: 8rem !important;
+    padding: 0.5rem 4rem 0.5rem 4rem!important;
+    align-items: center;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Search Input Focus */
+.search_nav:focus {
+    outline: none;
+    border-color: #fe424d;
+    box-shadow: 0 0 8px rgba(254, 66, 77, 0.5);
+}
+
+/* 🔹 Logo Slider */
+.logo-container {
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    white-space: nowrap;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Logo Items */
+.logo-item {
+    flex: 0 0 auto;
+    width: 100px;
+    height: 100px;
+    scroll-snap-align: center;
+}
+
+/* Ensure images fit properly */
+.logo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Hide scrollbar */
+.logo-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* 🔹 Responsive Adjustments */
+@media (max-width: 992px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem;
+    }
+
+    .show-img {
+        height: 25vh;
+    }
+
+    .f-info {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .card-img-top {
+        height: 180px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.5rem;
+    }
+
+    .f-info {
+        padding: 1rem;
+    }
+
+    .show-img {
+        height: 20vh;
+    }
+
+    .card-img-top {
+        height: 160px;
+    }
+
+    .btn-search {
+        padding: 0.4rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .search_nav {
+        padding: 0.4rem 2rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .search_nav {
+        width: 100%;
+        padding: 0.4rem 1rem;
+    }
+
+    .btn-search {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    .show-img {
+        height: 15vh;
+    }
+
+    .card-img-top {
+        height: 140px;
+    }
+}
+
+
